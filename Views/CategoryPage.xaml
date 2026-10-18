@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.CategoryPage"
+             Title=" "
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="*,Auto" Padding="20,8,20,20">
+        <ScrollView>
+            <VerticalStackLayout Spacing="12">
+                <Image x:Name="hero" WidthRequest="150" HeightRequest="128" Aspect="AspectFit"
+                       HorizontalOptions="Center" Margin="0,0,0,2" />
+                <Label x:Name="titleLabel" FontSize="28" FontAttributes="Bold" />
+                <Label x:Name="introLabel" FontSize="19" />
+                <Label Text="Les avantages" Style="{StaticResource SectionTitle}" Margin="0,8,0,0" />
+                <VerticalStackLayout x:Name="advantagesLayout" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="30,*" ColumnSpacing="8">
+                                <Image Source="ic_check.png" WidthRequest="22" HeightRequest="22" VerticalOptions="Start" />
+                                <Label Grid.Column="1" Text="{Binding .}" FontSize="17" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Grid.Row="1" Text="Voir les formules" Style="{StaticResource PrimaryButton}" Clicked="OnFormulas" />
+    </Grid>
+</ContentPage>

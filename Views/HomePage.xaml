@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.HomePage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="14">
+            <Image Source="logo.png" WidthRequest="140" HeightRequest="120" Aspect="AspectFit" HorizontalOptions="Start" />
+            <Label x:Name="greeting" Style="{StaticResource PageTitle}" />
+            <Label Text="Que souhaitez-vous faire aujourd’hui ?" FontSize="18" Margin="0,0,0,6" />
+
+            <Border Style="{StaticResource Card}">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSubscribe" /></Border.GestureRecognizers>
+                <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
+                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 22">
+                        <Image Source="ic_shield.png" WidthRequest="22" HeightRequest="22" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Souscrire une assurance" FontAttributes="Bold" FontSize="17" />
+                        <Label Text="Découvrez nos couvertures" Style="{StaticResource Muted}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="›" FontSize="26" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource Card}">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnContracts" /></Border.GestureRecognizers>
+                <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
+                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 22">
+                        <Image Source="ic_contracts.png" WidthRequest="22" HeightRequest="22" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Mes contrats" FontAttributes="Bold" FontSize="17" />
+                        <Label Text="Détails, échéancier, attestation" Style="{StaticResource Muted}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="›" FontSize="26" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource Card}">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnClaim" /></Border.GestureRecognizers>
+                <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
+                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="#FFF1E3" StrokeShape="RoundRectangle 22">
+                        <Image Source="ic_clipboard.png" WidthRequest="22" HeightRequest="22" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Déclarer un sinistre" FontAttributes="Bold" FontSize="17" />
+                        <Label Text="Faites votre déclaration en 4 étapes" Style="{StaticResource Muted}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="›" FontSize="26" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

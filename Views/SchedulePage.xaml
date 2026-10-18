@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.SchedulePage"
+             Title="Échéancier">
+    <Grid RowDefinitions="*,Auto" Padding="20,8,20,20">
+        <ScrollView>
+            <VerticalStackLayout Spacing="16">
+                <Border BackgroundColor="{StaticResource Chip}" StrokeThickness="0" Padding="14" StrokeShape="RoundRectangle 16">
+                    <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                        <Image Source="ic_contracts.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label x:Name="contractLabel" FontAttributes="Bold" FontSize="17" />
+                            <Label x:Name="priceLabel" FontSize="16" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <VerticalStackLayout x:Name="installmentsLayout" Spacing="0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="28,*,Auto" ColumnSpacing="8">
+                                <BoxView WidthRequest="2" Color="#BFD6EE" HorizontalOptions="Center"
+                                         VerticalOptions="Fill" Margin="0,14,0,-2" IsVisible="{Binding ShowLine}" />
+                                <Border WidthRequest="12" HeightRequest="12" StrokeThickness="0" StrokeShape="RoundRectangle 6"
+                                        BackgroundColor="{Binding DotColor}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,7,0,0" />
+                                <VerticalStackLayout Grid.Column="1" Padding="0,0,0,22" Spacing="2">
+                                    <Label Text="{Binding Label}" FontSize="18" />
+                                    <Label Text="{Binding AmountText}" FontSize="18" FontAttributes="Bold" />
+                                </VerticalStackLayout>
+                                <Border Grid.Column="2" VerticalOptions="Start" StrokeThickness="0" Padding="14,5"
+                                        StrokeShape="RoundRectangle 14" BackgroundColor="{Binding StatusBg}">
+                                    <Label Text="{Binding StatusText}" TextColor="{Binding StatusFg}" FontSize="15" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button x:Name="payButton" Grid.Row="1" Text="Payer la prochaine échéance"
+                Style="{StaticResource PrimaryButton}" Clicked="OnPayNext" />
+    </Grid>
+</ContentPage>

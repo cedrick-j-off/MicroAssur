@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MicroAssur</name>
+    </assembly>
+    <members>
+        <member name="T:MicroAssur.Models.Fmt">
+            <summary>Formatage FR (FCFA, dates) sans dépendre de la culture du téléphone.</summary>
+        </member>
+        <member name="T:MicroAssur.Services.Catalog">
+            <summary>Données de démonstration (aucun backend).</summary>
+        </member>
+        <member name="T:MicroAssur.Services.Session">
+            <summary>État en mémoire de l’application (parcours de souscription, contrats, sinistre).</summary>
+        </member>
+        <member name="T:MicroAssur.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

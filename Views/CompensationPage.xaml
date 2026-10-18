@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.CompensationPage"
+             Title="Indemnisation">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,8,20,20">
+            <Border BackgroundColor="{StaticResource Chip}" StrokeThickness="0" Padding="20" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="14">
+                    <Image Source="indemnisation.png" HeightRequest="150" Aspect="AspectFit" />
+                    <Label Text="Indemnisation en cours" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label x:Name="messageLabel" FontSize="17" HorizontalTextAlignment="Center" />
+                    <Button Text="Voir le détail" Style="{StaticResource PrimaryButton}" Margin="0,6,0,0" Clicked="OnDetail" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

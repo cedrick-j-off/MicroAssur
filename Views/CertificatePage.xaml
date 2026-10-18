@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.CertificatePage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Center" Padding="24,30" Spacing="14">
+            <Image Source="attestation.png" HeightRequest="250" Aspect="AspectFit" />
+            <Label Text="Attestation d’assurance" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label Text="Votre attestation est prête. Vous pouvez la télécharger ou la partager."
+                   FontSize="18" HorizontalTextAlignment="Center" Margin="0,0,0,10" />
+            <Button Text="Télécharger (PDF)" Style="{StaticResource PrimaryButton}" Clicked="OnDownload" />
+            <Button Text="Partager" Style="{StaticResource OutlineButton}" Clicked="OnShare" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

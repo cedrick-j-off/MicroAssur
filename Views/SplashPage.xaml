@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.SplashPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Center" Padding="28,60" Spacing="14">
+            <Image Source="logo.png" WidthRequest="260" HeightRequest="220" Aspect="AspectFit" HorizontalOptions="Center" />
+            <Label Text="Protégez ce qui compte pour vous"
+                   FontSize="26" FontAttributes="Bold" TextColor="Black"
+                   HorizontalTextAlignment="Center" Margin="0,0,0,14" />
+            <Button Text="Commencer" Style="{StaticResource PrimaryButton}" Clicked="OnStart" />
+            <Button Text="Se connecter" Style="{StaticResource OutlineButton}" Clicked="OnLogin" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

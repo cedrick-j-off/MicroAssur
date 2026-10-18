@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.GuaranteesPage"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20,8,20,20" RowSpacing="12">
+
+        <HorizontalStackLayout Spacing="8">
+            <Border x:Name="chipG" StrokeThickness="0" Padding="14,8" StrokeShape="RoundRectangle 16">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnChipG" /></Border.GestureRecognizers>
+                <Label x:Name="lblG" Text="Garanties" FontAttributes="Bold" FontSize="14" />
+            </Border>
+            <Border x:Name="chipE" StrokeThickness="0" Padding="14,8" StrokeShape="RoundRectangle 16">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnChipE" /></Border.GestureRecognizers>
+                <Label x:Name="lblE" Text="Exclusions" FontSize="14" />
+            </Border>
+            <Border x:Name="chipI" StrokeThickness="0" Padding="14,8" StrokeShape="RoundRectangle 16">
+                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnChipI" /></Border.GestureRecognizers>
+                <Label x:Name="lblI" Text="Indemnisation" FontSize="14" />
+            </Border>
+        </HorizontalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10">
+                <Label x:Name="sectionTitle" Style="{StaticResource SectionTitle}" Margin="0,0,0,4" />
+
+                <VerticalStackLayout x:Name="panelG" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}">
+                                <Grid ColumnDefinitions="48,*" ColumnSpacing="12">
+                                    <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0"
+                                            BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 20" VerticalOptions="Center">
+                                        <Image Source="{Binding Icon}" WidthRequest="22" HeightRequest="22" />
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label Text="{Binding Title}" FontSize="17" />
+                                        <Label Text="{Binding Limit}" FontSize="15" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="panelE" Spacing="10" IsVisible="False">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}">
+                                <Grid ColumnDefinitions="20,*">
+                                    <Label Text="•" FontSize="20" TextColor="{StaticResource TextMuted}" />
+                                    <Label Grid.Column="1" Text="{Binding .}" FontSize="16" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="panelI" Spacing="10" IsVisible="False">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}">
+                                <Grid ColumnDefinitions="30,*" ColumnSpacing="6">
+                                    <Image Source="ic_check.png" WidthRequest="22" HeightRequest="22" VerticalOptions="Start" />
+                                    <Label Grid.Column="1" Text="{Binding .}" FontSize="16" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button x:Name="continueButton" Grid.Row="2" Text="Continuer"
+                Style="{StaticResource PrimaryButton}" Clicked="OnContinue" />
+    </Grid>
+</ContentPage>

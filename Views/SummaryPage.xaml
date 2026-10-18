@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.SummaryPage"
+             Title="Récapitulatif"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="*,Auto" Padding="20,8,20,20">
+        <ScrollView>
+            <Border BackgroundColor="{StaticResource Chip}" StrokeThickness="0" Padding="16" StrokeShape="RoundRectangle 16" VerticalOptions="Start">
+                <VerticalStackLayout Spacing="18">
+                    <Label Text="Détails de votre contrat" FontSize="22" FontAttributes="Bold" />
+
+                    <Grid ColumnDefinitions="52,*" ColumnSpacing="12">
+                        <Border WidthRequest="46" HeightRequest="46" StrokeThickness="0" BackgroundColor="White" StrokeShape="RoundRectangle 23" VerticalOptions="Start">
+                            <Image Source="ic_cat_vehicule.png" WidthRequest="24" HeightRequest="24" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Catégorie" Style="{StaticResource Muted}" FontSize="16" />
+                            <Label x:Name="categoryValue" FontSize="19" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="52,*" ColumnSpacing="12">
+                        <Border WidthRequest="46" HeightRequest="46" StrokeThickness="0" BackgroundColor="White" StrokeShape="RoundRectangle 23" VerticalOptions="Start">
+                            <Image Source="ic_shield.png" WidthRequest="24" HeightRequest="24" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Formule" Style="{StaticResource Muted}" FontSize="16" />
+                            <Label x:Name="planValue" FontSize="19" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="52,*" ColumnSpacing="12">
+                        <Border WidthRequest="46" HeightRequest="46" StrokeThickness="0" BackgroundColor="White" StrokeShape="RoundRectangle 23" VerticalOptions="Start">
+                            <Image Source="ic_clipboard.png" WidthRequest="24" HeightRequest="24" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Prix" Style="{StaticResource Muted}" FontSize="16" />
+                            <Label x:Name="priceValue" FontSize="19" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="52,*" ColumnSpacing="12">
+                        <Border WidthRequest="46" HeightRequest="46" StrokeThickness="0" BackgroundColor="White" StrokeShape="RoundRectangle 23" VerticalOptions="Start">
+                            <Image Source="ic_clock.png" WidthRequest="24" HeightRequest="24" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Fréquence" Style="{StaticResource Muted}" FontSize="16" />
+                            <Label Text="Mensuelle" FontSize="19" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="Voir les garanties" TextColor="{StaticResource Primary}" FontAttributes="Bold"
+                           FontSize="17" HorizontalOptions="Center">
+                        <Label.GestureRecognizers><TapGestureRecognizer Tapped="OnSeeGuarantees" /></Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+        </ScrollView>
+        <Button Grid.Row="1" Text="Payer maintenant" Style="{StaticResource PrimaryButton}" Clicked="OnPay" />
+    </Grid>
+</ContentPage>

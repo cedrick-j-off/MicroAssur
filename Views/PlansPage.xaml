@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.PlansPage"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,8,20,20" Spacing="14">
+            <VerticalStackLayout x:Name="plansLayout" Spacing="14">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource Card}" Padding="16,14"
+                                Stroke="{Binding StrokeBrush}" StrokeThickness="{Binding StrokeWidth}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnPlanTapped" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding Name}" FontSize="22" FontAttributes="Bold" />
+                                    <Label Text="{Binding PriceText}" FontSize="17" />
+                                    <Label Text="{Binding Tagline}" FontSize="16" TextColor="{StaticResource TextMuted}" />
+                                </VerticalStackLayout>
+                                <Border Grid.Column="1" IsVisible="{Binding Recommended}" VerticalOptions="Start"
+                                        BackgroundColor="{StaticResource Primary}" StrokeThickness="0"
+                                        Padding="10,3" StrokeShape="RoundRectangle 10">
+                                    <Label Text="Recommandé" TextColor="White" FontSize="12" FontAttributes="Italic" />
+                                </Border>
+                                <Label Grid.Column="1" Text="›" FontSize="26" TextColor="{StaticResource Primary}"
+                                       VerticalOptions="End" HorizontalOptions="End" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

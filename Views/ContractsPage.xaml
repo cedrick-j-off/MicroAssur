@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.ContractsPage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="12">
+            <Label Text="Mes contrats" Style="{StaticResource PageTitle}" Margin="0,0,0,4" />
+
+            <Border BackgroundColor="{StaticResource Primary}" StrokeThickness="0" Padding="18" StrokeShape="RoundRectangle 16">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="2">
+                    <Label Text="Contrat actif" TextColor="White" FontSize="22" FontAttributes="Bold" Grid.ColumnSpan="2" />
+                    <Label x:Name="contractTitle" TextColor="White" FontSize="17" Grid.Row="1" Grid.ColumnSpan="2" />
+                    <Label x:Name="contractNumber" TextColor="White" FontSize="15" Grid.Row="2" Grid.ColumnSpan="2" />
+                    <Label x:Name="contractPrice" TextColor="White" FontSize="18" FontAttributes="Bold" Grid.Row="3" VerticalOptions="Center" />
+                    <Border Grid.Row="3" Grid.Column="1" BackgroundColor="{StaticResource Success}" StrokeThickness="0"
+                            Padding="12,3" StrokeShape="RoundRectangle 12">
+                        <Label Text="Actif" TextColor="White" FontSize="13" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Onglets Détails / Échéancier -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="0" Margin="0,4,0,0">
+                <Border BackgroundColor="White" StrokeThickness="0" Padding="0,10">
+                    <Label Text="Détails" TextColor="{StaticResource Primary}" FontSize="16" HorizontalOptions="Center" />
+                </Border>
+                <Border Grid.Column="1" BackgroundColor="{StaticResource Chip}" StrokeThickness="0" Padding="0,10">
+                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnScheduleTapped" /></Border.GestureRecognizers>
+                    <Label Text="Échéancier" TextColor="{StaticResource Primary}" FontSize="16" HorizontalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <Border Style="{StaticResource Card}" Padding="12,10">
+                <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                    <Border WidthRequest="38" HeightRequest="38" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 19" VerticalOptions="Center">
+                        <Image Source="ic_clipboard.png" WidthRequest="20" HeightRequest="20" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Catégorie" FontSize="16" />
+                        <Label x:Name="categoryValue" FontSize="16" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource Card}" Padding="12,10">
+                <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                    <Border WidthRequest="38" HeightRequest="38" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 19" VerticalOptions="Center">
+                        <Image Source="ic_shield.png" WidthRequest="20" HeightRequest="20" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Formule" FontSize="16" />
+                        <Label x:Name="planValue" FontSize="16" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource Card}" Padding="12,10">
+                <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                    <Border WidthRequest="38" HeightRequest="38" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 19" VerticalOptions="Center">
+                        <Image Source="ic_calendar.png" WidthRequest="20" HeightRequest="20" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Date de début" FontSize="16" />
+                        <Label x:Name="startValue" FontSize="16" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource Card}" Padding="12,10">
+                <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                    <Border WidthRequest="38" HeightRequest="38" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 19" VerticalOptions="Center">
+                        <Image Source="ic_calendar_check.png" WidthRequest="20" HeightRequest="20" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Prochaine échéance" FontSize="16" />
+                        <Label x:Name="nextValue" FontSize="16" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Button Text="Voir l’attestation" Style="{StaticResource OutlineButton}" Margin="0,10,0,0" Clicked="OnCertificate" />
+            <Button Text="Déclarer un sinistre" Style="{StaticResource PrimaryButton}" Clicked="OnClaim" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

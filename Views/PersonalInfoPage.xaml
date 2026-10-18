@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroAssur.Views.PersonalInfoPage"
+             Title="Vos informations"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="*,Auto" Padding="20,8,20,20">
+        <ScrollView>
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Nom complet" FontSize="17" />
+                <Border Style="{StaticResource Field}" Margin="0,0,0,8">
+                    <Entry x:Name="nameEntry" Placeholder="Ex. Jean Mbarga" />
+                </Border>
+
+                <Label Text="Téléphone" FontSize="17" />
+                <Border Style="{StaticResource Field}" Margin="0,0,0,8">
+                    <Entry x:Name="phoneEntry" Placeholder="+237 6 12 34 56 78" Keyboard="Telephone" />
+                </Border>
+
+                <Label Text="Date de naissance" FontSize="17" />
+                <Border Style="{StaticResource Field}" Margin="0,0,0,8">
+                    <DatePicker x:Name="dobPicker" Format="dd/MM/yyyy" />
+                </Border>
+
+                <Label Text="Adresse" FontSize="17" />
+                <Border Style="{StaticResource Field}" Margin="0,0,0,8">
+                    <Entry x:Name="addressEntry" Placeholder="Ville, quartier" />
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Grid.Row="1" Text="Continuer" Style="{StaticResource PrimaryButton}" Clicked="OnContinue" />
+    </Grid>
+</ContentPage>
