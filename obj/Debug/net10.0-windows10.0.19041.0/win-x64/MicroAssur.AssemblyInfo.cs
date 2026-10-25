@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MicroAssur")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1d48667e27c92a0d6fff12ed61abf347cd14e92f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MicroAssur")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MicroAssur")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

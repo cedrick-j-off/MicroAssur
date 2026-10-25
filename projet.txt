@@ -1,0 +1,114 @@
+MICROASSUR
+RAPPORT DE PROJET
+Bilan des objectifs, taux de realisation et difficultes
+Date : 25 octobre 2026
+
+============================== PAGE 1 / 2 ==============================
+
+1. PRESENTATION DU PROJET
+
+MicroAssur est une application de demonstration d’assurance realisee avec
+.NET MAUI, C# et XAML. Elle vise a proposer un parcours mobile simple pour
+decouvrir des offres d’assurance, consulter des contrats et simuler des
+operations courantes. Le projet comprend une application cliente et une API
+ASP.NET Core de demonstration. Les paiements Mobile Money affiches dans
+l’application sont simules : aucun debit ni transfert d’argent n’est effectue.
+
+2. OBJECTIFS DU PROJET
+
+- Proposer une interface claire, accessible et coherente avec le parcours
+  d’une application d’assurance.
+- Permettre a l’utilisateur de parcourir les categories, comparer les formules
+  et saisir ses informations avant une souscription.
+- Afficher les contrats, leur echeancier et les prochaines cotisations.
+- Simuler les paiements MTN Mobile Money et Orange Money avec des resultats
+  acceptes, refuses ou en attente.
+- Permettre de declarer un sinistre et d’en consulter les etapes de suivi.
+- Enregistrer les informations du profil et retrouver les contrats sur
+  l’appareil.
+- Fournir un recu de transaction consultable et exportable apres confirmation.
+
+3. FONCTIONNALITES REALISEES
+
+L’application contient les ecrans d’accueil, de catalogue, de categorie,
+de garanties, de choix de formule, de saisie des informations, de
+recapitulatif, de paiement, d’attestation, de contrats et d’echeancier, ainsi
+que les ecrans de declaration, de suivi et d’indemnisation d’un sinistre.
+Une navigation par onglets donne acces a l’accueil, aux contrats, a la
+souscription et au profil.
+
+Le profil permet de saisir le nom, le telephone, la date de naissance et
+l’adresse. Ces donnees sont conservees localement. Les contrats et l’etat des
+echeances sont egalement enregistres sur l’appareil et peuvent etre consultes
+depuis le profil.
+
+Le paiement est relie a une API ASP.NET Core. L’API controle les donnees de
+souscription, gere les demandes idempotentes, conserve les paiements et
+contrats dans SQLite et expose des routes de simulation reservees au
+developpement. Apres confirmation, l’application genere un fichier texte de
+recu avec reference, date, operateur, telephone, type et montant ; le fichier
+peut etre transmis ou enregistre au moyen du partage natif de l’appareil.
+
+L’interface a ete harmonisee avec des textes fonces, des cartes et des boutons
+aux couleurs coherentes, et des ecrans de profil et de paiement plus explicites.
+
+============================== PAGE 2 / 2 ==============================
+
+4. TAUX DE REALISATION
+
+Taux global estime : 80 %.
+
+Cette estimation est une evaluation fonctionnelle du perimetre de
+demonstration, et non un taux de couverture de tests. Les ecrans et le parcours
+principal sont en place, mais certaines fonctions demeurent volontairement
+simulees et la cible Android n’a pas pu etre verifiee dans l’environnement de
+developpement.
+
+Detail indicatif :
+- Interface, navigation et parcours de souscription : 90 %.
+- Profil local et consultation des contrats : 85 %.
+- API, persistance SQLite et simulation de paiement : 85 %.
+- Declaration et suivi des sinistres : 65 %.
+- Documents : 60 % (recu de transaction exportable ; attestation PDF encore
+  simulee).
+- Validation multiplateforme et tests : 55 %.
+
+La compilation de l’application Windows a reussi et l’application a ete
+demarree. La route de catalogue de l’API locale a repondu avec le statut HTTP
+200 lors de la verification. En revanche, aucun test de compilation Android
+n’a pu etre mene a terme.
+
+5. DIFFICULTES RENCONTREES
+
+- Environnement Android : le SDK Android etait absent de la machine. Cela a
+  empeche de compiler et verifier l’application sur Android ; la verification
+  disponible a ete faite sur la cible Windows.
+- Connexion au backend : l’adresse du serveur doit differer selon le contexte.
+  L’emulateur Android utilise l’adresse de l’hote emule, tandis que Windows
+  utilise localhost. Un appareil physique necessiterait une adresse reseau
+  accessible et un reseau de confiance.
+- Paiement : l’integration reelle avec les operateurs exige des comptes,
+  des acces et une infrastructure de paiement qui ne font pas partie de cette
+  demonstration. Le simulateur ne doit donc pas etre presente comme un service
+  de paiement de production.
+- Documents : la generation et l’export du recu de transaction sont
+  implementes, mais la creation d’une attestation PDF authentique reste a
+  realiser.
+- Donnees et sinistres : plusieurs contenus et etapes sont des donnees de
+  demonstration. L’envoi d’un sinistre et son traitement par un assureur ne
+  sont pas connectes a un service metier reel.
+
+6. CONCLUSION ET SUITES PROPOSEES
+
+Le projet fournit un prototype fonctionnel pour presenter le parcours
+MicroAssur, tester une souscription et suivre une simulation de paiement.
+L’interface Windows et l’API locale ont ete validees, mais cela ne remplace
+pas des essais sur appareil Android ni des tests metier complets.
+
+Les prochaines etapes recommandees sont l’installation/configuration du SDK
+Android, les tests sur emulateur et appareil physique, la mise en place de
+tests automatises pour les parcours principaux, la production d’une attestation
+PDF reelle, puis le raccordement securise a des services de contrats et de
+sinistres. Tout branchement a un operateur de paiement necessiterait une
+integration officielle et une validation de securite avant toute utilisation
+en production.

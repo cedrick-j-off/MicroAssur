@@ -1,34 +1,112 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MicroAssur.Models"
              x:Class="MicroAssur.Views.ProfilePage"
              Shell.NavBarIsVisible="False">
     <ScrollView>
-        <VerticalStackLayout Padding="20,24" Spacing="14">
-            <Label Text="Profil" Style="{StaticResource PageTitle}" />
-            <Border WidthRequest="88" HeightRequest="88" StrokeThickness="0" StrokeShape="RoundRectangle 44"
-                    BackgroundColor="{StaticResource Primary}" HorizontalOptions="Center" Margin="0,8,0,0">
-                <Label x:Name="initialsLabel" TextColor="White" FontSize="32" FontAttributes="Bold"
-                       HorizontalOptions="Center" VerticalOptions="Center" />
-            </Border>
-            <Label x:Name="nameLabel" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
-            <Label x:Name="phoneLabel" Style="{StaticResource Muted}" FontSize="16" HorizontalOptions="Center" Margin="0,0,0,10" />
+        <VerticalStackLayout Padding="20,20" Spacing="14">
+            <Label Text="Mon profil" Style="{StaticResource PageTitle}" />
+            <Label Text="Enregistrez vos informations pour les retrouver lors de vos prochaines visites."
+                   FontSize="14" TextColor="{StaticResource TextMuted}" />
 
-            <Border Style="{StaticResource Card}">
-                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnContracts" /></Border.GestureRecognizers>
-                <Grid ColumnDefinitions="*,Auto">
-                    <Label Text="Mes contrats" FontSize="17" />
-                    <Label Grid.Column="1" Text="›" FontSize="24" TextColor="{StaticResource TextMuted}" />
+            <Border Background="{StaticResource PrimaryGradient}" StrokeThickness="0"
+                    Padding="18" StrokeShape="RoundRectangle 20">
+                <Grid ColumnDefinitions="64,*" ColumnSpacing="14">
+                    <Border WidthRequest="60" HeightRequest="60" StrokeThickness="0"
+                            BackgroundColor="#FFFFFF" Opacity="0.18"
+                            StrokeShape="RoundRectangle 30" />
+                    <Label x:Name="initialsLabel" Grid.Column="0" TextColor="White"
+                           FontSize="23" FontAttributes="Bold"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="3">
+                        <Label x:Name="nameLabel" Text="Votre nom" TextColor="White"
+                               FontSize="19" FontAttributes="Bold" />
+                        <Label x:Name="phoneLabel" Text="Votre téléphone"
+                               TextColor="White" FontSize="14" Opacity="0.9" />
+                    </VerticalStackLayout>
                 </Grid>
             </Border>
+
             <Border Style="{StaticResource Card}">
-                <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnClaim" /></Border.GestureRecognizers>
-                <Grid ColumnDefinitions="*,Auto">
-                    <Label Text="Déclarer un sinistre" FontSize="17" />
-                    <Label Grid.Column="1" Text="›" FontSize="24" TextColor="{StaticResource TextMuted}" />
-                </Grid>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Informations personnelles" Style="{StaticResource SectionTitle}" />
+
+                    <Label Text="Nom complet" FontSize="14" FontAttributes="Bold" />
+                    <Border Style="{StaticResource Field}">
+                        <Entry x:Name="nameEntry" Placeholder="Ex. Jean Mbarga" />
+                    </Border>
+
+                    <Label Text="Téléphone" FontSize="14" FontAttributes="Bold" />
+                    <Border Style="{StaticResource Field}">
+                        <Entry x:Name="phoneEntry" Placeholder="+237 6 12 34 56 78" Keyboard="Telephone" />
+                    </Border>
+
+                    <Label Text="Date de naissance" FontSize="14" FontAttributes="Bold" />
+                    <Border Style="{StaticResource Field}">
+                        <DatePicker x:Name="birthDatePicker" Format="dd/MM/yyyy" />
+                    </Border>
+
+                    <Label Text="Adresse" FontSize="14" FontAttributes="Bold" />
+                    <Border Style="{StaticResource Field}">
+                        <Entry x:Name="addressEntry" Placeholder="Ville, quartier" />
+                    </Border>
+
+                    <Button Text="Enregistrer mon profil" Style="{StaticResource PrimaryButton}"
+                            Margin="0,8,0,0" Clicked="OnSaveProfile" />
+                </VerticalStackLayout>
             </Border>
 
-            <Button Text="Se déconnecter" Style="{StaticResource OutlineButton}" Margin="0,16,0,0" Clicked="OnLogout" />
+            <Grid ColumnDefinitions="*,Auto" Margin="0,8,0,0">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Mes contrats" Style="{StaticResource SectionTitle}" />
+                    <Label x:Name="contractCountLabel" Style="{StaticResource Muted}" />
+                </VerticalStackLayout>
+                <Button Grid.Column="1" Text="Tout voir" Style="{StaticResource OutlineButton}"
+                        HeightRequest="42" FontSize="14" Padding="12,0"
+                        Clicked="OnContracts" />
+            </Grid>
+
+            <VerticalStackLayout x:Name="contractsLayout" Spacing="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Contract">
+                        <Border Style="{StaticResource Card}" Padding="14">
+                            <VerticalStackLayout Spacing="7">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                    <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" />
+                                    <Border Grid.Column="1" BackgroundColor="{StaticResource SuccessBg}"
+                                            StrokeThickness="0" Padding="9,4"
+                                            StrokeShape="RoundRectangle 12">
+                                        <Label Text="{Binding StatusText}" TextColor="{StaticResource Success}"
+                                               FontSize="12" FontAttributes="Bold" />
+                                    </Border>
+                                </Grid>
+                                <Label Text="{Binding Number, StringFormat='Contrat n° {0}'}"
+                                       FontSize="13" TextColor="{StaticResource TextMuted}" />
+                                <Grid ColumnDefinitions="*,*" Margin="0,3,0,0">
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="Cotisation" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                                        <Label Text="{Binding PriceText}" FontSize="14" FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="Prochaine échéance" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                                        <Label Text="{Binding NextDueText}" FontSize="14" FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Label x:Name="emptyContractsLabel" Text="Aucun contrat pour le moment."
+                   Style="{StaticResource Muted}" IsVisible="False"
+                   HorizontalTextAlignment="Center" Margin="0,8" />
+
+            <Button Text="Déclarer un sinistre" Style="{StaticResource OutlineButton}"
+                    Margin="0,8,0,0" Clicked="OnClaim" />
+            <Button Text="Se déconnecter" Style="{StaticResource OutlineButton}"
+                    Clicked="OnLogout" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

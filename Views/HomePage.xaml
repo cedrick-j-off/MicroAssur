@@ -3,15 +3,24 @@
              x:Class="MicroAssur.Views.HomePage"
              Shell.NavBarIsVisible="False">
     <ScrollView>
-        <VerticalStackLayout Padding="20,24" Spacing="14">
-            <Image Source="logo.png" WidthRequest="140" HeightRequest="120" Aspect="AspectFit" HorizontalOptions="Start" />
-            <Label x:Name="greeting" Style="{StaticResource PageTitle}" />
-            <Label Text="Que souhaitez-vous faire aujourd’hui ?" FontSize="18" Margin="0,0,0,6" />
+        <VerticalStackLayout Padding="20,20" Spacing="14">
+            <Border Background="{StaticResource PrimaryGradient}" StrokeThickness="0"
+                    Padding="18,18" StrokeShape="RoundRectangle 22">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="MICROASSUR" FontSize="12" FontAttributes="Bold"
+                           TextColor="#DCEAFF" CharacterSpacing="1.5" />
+                    <Label x:Name="greeting" FontSize="26" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Votre protection, simplement."
+                           FontSize="16" TextColor="White" Opacity="0.9" />
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="Que souhaitez-vous faire aujourd’hui ?" FontSize="18"
+                   FontAttributes="Bold" Margin="0,8,0,0" />
 
-            <Border Style="{StaticResource Card}">
+            <Border Style="{StaticResource Card}" Padding="16,14">
                 <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSubscribe" /></Border.GestureRecognizers>
                 <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
-                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 22">
+                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="#E5F0FF" StrokeShape="RoundRectangle 22">
                         <Image Source="ic_shield.png" WidthRequest="22" HeightRequest="22" />
                     </Border>
                     <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
@@ -22,10 +31,10 @@
                 </Grid>
             </Border>
 
-            <Border Style="{StaticResource Card}">
+            <Border Style="{StaticResource Card}" Padding="16,14">
                 <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnContracts" /></Border.GestureRecognizers>
                 <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
-                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="{StaticResource Chip}" StrokeShape="RoundRectangle 22">
+                    <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="#E8F7F0" StrokeShape="RoundRectangle 22">
                         <Image Source="ic_contracts.png" WidthRequest="22" HeightRequest="22" />
                     </Border>
                     <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
@@ -36,7 +45,7 @@
                 </Grid>
             </Border>
 
-            <Border Style="{StaticResource Card}">
+            <Border Style="{StaticResource Card}" Padding="16,14">
                 <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnClaim" /></Border.GestureRecognizers>
                 <Grid ColumnDefinitions="48,*,Auto" ColumnSpacing="12">
                     <Border WidthRequest="44" HeightRequest="44" StrokeThickness="0" BackgroundColor="#FFF1E3" StrokeShape="RoundRectangle 22">

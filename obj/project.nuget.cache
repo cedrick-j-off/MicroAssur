@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zaH0awwFduc=",
+  "dgSpecHash": "jJcLPz/n1Fc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\cedric azou\\Documents\\MicroAssur\\MicroAssur.csproj",
+  "projectFilePath": "C:\\Users\\cedric azou\\Documents\\azou ebendeng simeon cedric 22G00028\\MicroAssur\\MicroAssur.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cedric azou\\.nuget\\packages\\googlegson\\2.13.1.1\\googlegson.2.13.1.1.nupkg.sha512",
     "C:\\Users\\cedric azou\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",

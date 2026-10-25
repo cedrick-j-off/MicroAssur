@@ -4,11 +4,17 @@
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="Center" Padding="28,60" Spacing="14">
-            <Image Source="logo.png" WidthRequest="260" HeightRequest="220" Aspect="AspectFit" HorizontalOptions="Center" />
+        <VerticalStackLayout VerticalOptions="Center" Padding="28,48" Spacing="14">
+            <Border BackgroundColor="{StaticResource Chip}" StrokeThickness="0" Padding="12"
+                    StrokeShape="RoundRectangle 28" HorizontalOptions="Center">
+                <Image Source="logo.png" WidthRequest="220" HeightRequest="190" Aspect="AspectFit" />
+            </Border>
             <Label Text="Protégez ce qui compte pour vous"
-                   FontSize="26" FontAttributes="Bold" TextColor="Black"
-                   HorizontalTextAlignment="Center" Margin="0,0,0,14" />
+                   FontSize="26" FontAttributes="Bold" TextColor="{StaticResource TextDark}"
+                   HorizontalTextAlignment="Center" Margin="0,8,0,8" />
+            <Label Text="Une assurance simple, proche de vous."
+                   FontSize="16" TextColor="{StaticResource TextMuted}"
+                   HorizontalTextAlignment="Center" Margin="0,0,0,12" />
             <Button Text="Commencer" Style="{StaticResource PrimaryButton}" Clicked="OnStart" />
             <Button Text="Se connecter" Style="{StaticResource OutlineButton}" Clicked="OnLogin" />
         </VerticalStackLayout>

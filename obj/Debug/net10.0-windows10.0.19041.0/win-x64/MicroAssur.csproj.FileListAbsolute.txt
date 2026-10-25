@@ -1065,3 +1065,4 @@ C:\Users\cedric azou\AppData\Local\Temp\MicroAssurBuild\MicroAssur.runtimeconfig
 C:\Users\cedric azou\AppData\Local\Temp\MicroAssurBuild\MicroAssur.dll
 C:\Users\cedric azou\AppData\Local\Temp\MicroAssurBuild\MicroAssur.pdb
 C:\Users\cedric azou\AppData\Local\Temp\MicroAssurBuild\MicroAssur.pri
+C:\Users\cedric azou\Documents\MicroAssur\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MicroAssur.sourcelink.json

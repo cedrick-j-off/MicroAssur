@@ -32,4 +32,9 @@
     <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.110" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Backend\**\*.cs" />
+    <None Remove="Backend\**\*.cs" />
+  </ItemGroup>
+
 </Project>

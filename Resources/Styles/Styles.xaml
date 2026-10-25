@@ -3,8 +3,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#0A84FF" Offset="0" />
-        <GradientStop Color="#0058D6" Offset="1" />
+        <GradientStop Color="#3184FF" Offset="0" />
+        <GradientStop Color="#155EEF" Offset="1" />
     </LinearGradientBrush>
 
     <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
@@ -33,6 +33,7 @@
     <Style x:Key="PrimaryButton" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource PrimaryGradient}" />
         <Setter Property="TextColor" Value="White" />
+        <Setter Property="BorderWidth" Value="0" />
         <Setter Property="FontSize" Value="17" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="CornerRadius" Value="14" />
@@ -42,8 +43,8 @@
     <Style x:Key="OutlineButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{StaticResource Primary}" />
-        <Setter Property="BorderColor" Value="{StaticResource PrimaryLight}" />
-        <Setter Property="BorderWidth" Value="1.5" />
+        <Setter Property="BorderColor" Value="{StaticResource CardBorder}" />
+        <Setter Property="BorderWidth" Value="1" />
         <Setter Property="FontSize" Value="17" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="CornerRadius" Value="14" />

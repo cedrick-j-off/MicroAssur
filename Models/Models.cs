@@ -110,6 +110,7 @@ public class Contract
     public string PriceText => $"{Fmt.Fcfa(PriceFcfa)}/mois";
     public Installment? NextInstallment => Installments.FirstOrDefault(i => !i.Paid);
     public string NextDueText => NextInstallment is null ? "—" : Fmt.Date(NextInstallment.DueDate);
+    public string StatusText => NextInstallment is null ? "Cotisations réglées" : "En cours";
 
     public static Contract Demo() => new()
     {

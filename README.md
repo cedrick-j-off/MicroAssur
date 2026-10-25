@@ -34,11 +34,12 @@ données de démonstration (aucun backend). Cible fournie : **Android** (.NET 8)
 - `Resources/Styles` : couleurs et styles (bouton dégradé, cartes, champs) tirés de la maquette.
 - `Resources/Images` : logo, moto, illustrations (extraits du PDF) + icônes SVG.
 - `Models/` et `Services/` : modèles, catalogue de démonstration, état de session en mémoire.
+- L’onglet Profil permet d’enregistrer localement les informations personnelles et d’afficher les contrats enregistrés sur l’appareil.
 - `Views/` : une page XAML + code-behind par écran.
 - `AppShell.xaml` : barre d'onglets (Accueil, Contrats, Souscription, Profil) et routes des pages.
 
 ## À savoir
 - Parcours testable de bout en bout : Commencer → catégorie → formules → infos → récap → paiement → attestation → contrats → échéancier / sinistre → suivi → indemnisation.
 - Textes **Exclusions** et **Indemnisation** (écran 04), étapes 2-3 du sinistre, pages Accueil/Profil : contenu de remplacement, absent de la maquette.
-- Paiement, téléchargement PDF et envoi du sinistre sont simulés ; le bouton « Partager » utilise le partage natif.
+- Le paiement est simulé sans débit réel ; après confirmation, le reçu de transaction est généré en fichier texte et peut être téléchargé via le partage natif. Le téléchargement PDF de l’attestation et l’envoi du sinistre restent simulés.
 - Brancher plus tard une API en remplaçant `Services/Session.cs` et `Services/Catalog.cs`.

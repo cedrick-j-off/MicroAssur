@@ -18633,11 +18633,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cedric azou\\Documents\\MicroAssur\\MicroAssur.csproj",
+      "projectUniqueName": "C:\\Users\\cedric azou\\Documents\\azou ebendeng simeon cedric 22G00028\\MicroAssur\\MicroAssur.csproj",
       "projectName": "MicroAssur",
-      "projectPath": "C:\\Users\\cedric azou\\Documents\\MicroAssur\\MicroAssur.csproj",
+      "projectPath": "C:\\Users\\cedric azou\\Documents\\azou ebendeng simeon cedric 22G00028\\MicroAssur\\MicroAssur.csproj",
       "packagesPath": "C:\\Users\\cedric azou\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cedric azou\\Documents\\MicroAssur\\obj\\",
+      "outputPath": "C:\\Users\\cedric azou\\Documents\\azou ebendeng simeon cedric 22G00028\\MicroAssur\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [

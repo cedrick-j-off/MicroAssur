@@ -1,0 +1,78 @@
+@baseUrl = http://localhost:5080
+@idempotencyKey = demo-subscription-001
+
+### Check that the API and SQLite store are ready
+GET {{baseUrl}}/health
+
+### Browse the insurance plans and monthly prices
+GET {{baseUrl}}/api/plans
+
+### Start a simulated MTN subscription payment (XAF)
+# @name createPayment
+POST {{baseUrl}}/api/payments
+Content-Type: application/json
+Idempotency-Key: {{idempotencyKey}}
+
+{
+  "provider": "Mtn",
+  "purpose": "Subscription",
+  "amount": 1000,
+  "phoneNumber": "+237 6 12 34 56 78",
+  "customerName": "Jean Mbarga",
+  "birthDate": "1990-01-01",
+  "address": "Yaoundé, Cameroun",
+  "categoryId": "moto",
+  "categoryName": "Accident / Moto",
+  "planName": "Confort"
+}
+
+### The request above is idempotent: replaying its key returns the same payment
+POST {{baseUrl}}/api/payments
+Content-Type: application/json
+Idempotency-Key: {{idempotencyKey}}
+
+{
+  "provider": "Mtn",
+  "purpose": "Subscription",
+  "amount": 1000,
+  "phoneNumber": "+237 6 12 34 56 78",
+  "customerName": "Jean Mbarga",
+  "birthDate": "1990-01-01",
+  "address": "Yaoundé, Cameroun",
+  "categoryId": "moto",
+  "categoryName": "Accident / Moto",
+  "planName": "Confort"
+}
+
+### List payment records (find the payment id in the response)
+GET {{baseUrl}}/api/payments
+
+@paymentId = {{createPayment.response.body.$.id}}
+
+### Simulate operator approval; a subscription is persisted atomically
+POST {{baseUrl}}/api/simulator/payments/{{paymentId}}/status
+Content-Type: application/json
+
+{
+  "outcome": "Succeeded"
+}
+
+### Alternative test outcomes: "Failed" or "Pending"
+
+### Query the payment state
+GET {{baseUrl}}/api/payments/{{paymentId}}
+
+### Not found example (Problem Details 404)
+GET {{baseUrl}}/api/payments/00000000-0000-0000-0000-000000000000
+
+### List contracts created by confirmed subscription payments
+# @name listSubscriptions
+GET {{baseUrl}}/api/subscriptions
+
+@subscriptionId = {{listSubscriptions.response.body.$[0].id}}
+
+### Inspect one contract (replace with its id from the list response)
+GET {{baseUrl}}/api/subscriptions/{{subscriptionId}}
+
+### Not found contract example (Problem Details 404)
+GET {{baseUrl}}/api/subscriptions/00000000-0000-0000-0000-000000000000

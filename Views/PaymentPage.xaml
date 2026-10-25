@@ -5,8 +5,23 @@
              Shell.TabBarIsVisible="False">
     <Grid RowDefinitions="*,Auto" Padding="20,8,20,20">
         <ScrollView>
-            <VerticalStackLayout Spacing="12">
-                <Label Text="Choisissez votre opérateur" Style="{StaticResource SectionTitle}" Margin="0,0,0,4" />
+            <VerticalStackLayout Spacing="14">
+                <Label Text="Finalisez votre paiement" Style="{StaticResource PageTitle}" />
+                <Border BackgroundColor="{StaticResource Chip}" StrokeThickness="0"
+                        Padding="14,12" StrokeShape="RoundRectangle 14">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Border BackgroundColor="White" StrokeThickness="0" Padding="8,4"
+                                StrokeShape="RoundRectangle 8" VerticalOptions="Start">
+                            <Label Text="DÉMO" FontSize="11" FontAttributes="Bold"
+                                   TextColor="{StaticResource Primary}" />
+                        </Border>
+                        <Label Grid.Column="1" Text="Aucun débit réel ne sera effectué."
+                               FontSize="14" TextColor="{StaticResource TextDark}"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <Label Text="Choisissez votre opérateur" Style="{StaticResource SectionTitle}" Margin="0,2,0,0" />
 
                 <Border Style="{StaticResource Card}">
                     <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnMtnTapped" /></Border.GestureRecognizers>
@@ -30,15 +45,45 @@
                     </Grid>
                 </Border>
 
-                <Label Text="Montant à payer" FontSize="17" Margin="0,16,0,0" />
-                <Border Style="{StaticResource Card}" Padding="14,14">
-                    <Label x:Name="amountLabel" FontSize="24" FontAttributes="Bold" />
+                <Label Text="Téléphone Mobile Money" FontSize="16" FontAttributes="Bold" Margin="0,4,0,0" />
+                <Border Style="{StaticResource Field}">
+                    <Entry x:Name="phoneEntry" Keyboard="Telephone" Placeholder="+237 6 12 34 56 78" />
+                </Border>
+
+                <Label Text="Montant à payer" FontSize="16" FontAttributes="Bold" Margin="0,4,0,0" />
+                <Border BackgroundColor="White" Stroke="{StaticResource CardBorder}" StrokeThickness="1"
+                        Padding="16,14" StrokeShape="RoundRectangle 16">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Total" FontSize="13" TextColor="{StaticResource TextMuted}" />
+                            <Label x:Name="amountLabel" FontSize="24" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextDark}" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="XAF" FontSize="13" FontAttributes="Bold"
+                               TextColor="{StaticResource Primary}" VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Padding="14,12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Résultat de la simulation" FontSize="15" FontAttributes="Bold" />
+                        <Label Text="Choisissez la réponse fictive de l’opérateur."
+                               FontSize="13" TextColor="{StaticResource TextMuted}" />
+                        <Picker x:Name="simulationPicker" Title="Choisir un résultat" Margin="-8,0,-8,-6">
+                            <Picker.Items>
+                                <x:String>Paiement accepté</x:String>
+                                <x:String>Paiement refusé</x:String>
+                                <x:String>En attente de confirmation</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>
         </ScrollView>
 
         <VerticalStackLayout Grid.Row="1" Spacing="10">
             <ActivityIndicator x:Name="spinner" IsRunning="False" IsVisible="False" Color="{StaticResource Primary}" />
+            <Button x:Name="refreshPaymentButton" Text="Actualiser le statut du paiement" IsVisible="False" Clicked="OnRefreshPayment" />
             <Button x:Name="payButton" Text="Payer maintenant" Style="{StaticResource PrimaryButton}" Clicked="OnPay" />
         </VerticalStackLayout>
     </Grid>
